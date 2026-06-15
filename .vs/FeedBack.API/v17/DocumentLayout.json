@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ITIntern01\\Web_App\\Feedback\\FeedBack.API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{74996AB0-51CC-4114-93B9-C5B89354C275}|FeedBack.API\\FeedBack.API.csproj|c:\\users\\itintern01\\web_app\\feedback\\feedback.api\\feedback.api\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74996AB0-51CC-4114-93B9-C5B89354C275}|FeedBack.API\\FeedBack.API.csproj|solutionrelative:feedback.api\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74996AB0-51CC-4114-93B9-C5B89354C275}|FeedBack.API\\FeedBack.API.csproj|c:\\users\\itintern01\\web_app\\feedback\\feedback.api\\feedback.api\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74996AB0-51CC-4114-93B9-C5B89354C275}|FeedBack.API\\FeedBack.API.csproj|solutionrelative:feedback.api\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74996AB0-51CC-4114-93B9-C5B89354C275}|FeedBack.API\\FeedBack.API.csproj|c:\\users\\itintern01\\web_app\\feedback\\feedback.api\\feedback.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{74996AB0-51CC-4114-93B9-C5B89354C275}|FeedBack.API\\FeedBack.API.csproj|solutionrelative:feedback.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74996AB0-51CC-4114-93B9-C5B89354C275}|FeedBack.API\\FeedBack.API.csproj|c:\\users\\itintern01\\web_app\\feedback\\feedback.api\\feedback.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74996AB0-51CC-4114-93B9-C5B89354C275}|FeedBack.API\\FeedBack.API.csproj|solutionrelative:feedback.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74996AB0-51CC-4114-93B9-C5B89354C275}|FeedBack.API\\FeedBack.API.csproj|c:\\users\\itintern01\\web_app\\feedback\\feedback.api\\feedback.api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{74996AB0-51CC-4114-93B9-C5B89354C275}|FeedBack.API\\FeedBack.API.csproj|solutionrelative:feedback.api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\ITIntern01\\Web_App\\Feedback\\FeedBack.API\\FeedBack.API\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "FeedBack.API\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\ITIntern01\\Web_App\\Feedback\\FeedBack.API\\FeedBack.API\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "FeedBack.API\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T17:51:02.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ITIntern01\\Web_App\\Feedback\\FeedBack.API\\FeedBack.API\\appsettings.json",
+              "RelativeDocumentMoniker": "FeedBack.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\ITIntern01\\Web_App\\Feedback\\FeedBack.API\\FeedBack.API\\appsettings.json",
+              "RelativeToolTip": "FeedBack.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-06-02T17:50:54.874Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WeatherForecast.cs",
+              "DocumentMoniker": "C:\\Users\\ITIntern01\\Web_App\\Feedback\\FeedBack.API\\FeedBack.API\\WeatherForecast.cs",
+              "RelativeDocumentMoniker": "FeedBack.API\\WeatherForecast.cs",
+              "ToolTip": "C:\\Users\\ITIntern01\\Web_App\\Feedback\\FeedBack.API\\FeedBack.API\\WeatherForecast.cs",
+              "RelativeToolTip": "FeedBack.API\\WeatherForecast.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T17:50:39.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ITIntern01\\Web_App\\Feedback\\FeedBack.API\\FeedBack.API\\Program.cs",
+              "RelativeDocumentMoniker": "FeedBack.API\\Program.cs",
+              "ToolTip": "C:\\Users\\ITIntern01\\Web_App\\Feedback\\FeedBack.API\\FeedBack.API\\Program.cs",
+              "RelativeToolTip": "FeedBack.API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T17:50:17.017Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\ITIntern01\\Web_App\\Feedback\\FeedBack.API\\FeedBack.API\\Dockerfile",
+              "RelativeDocumentMoniker": "FeedBack.API\\Dockerfile",
+              "ToolTip": "C:\\Users\\ITIntern01\\Web_App\\Feedback\\FeedBack.API\\FeedBack.API\\Dockerfile",
+              "RelativeToolTip": "FeedBack.API\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-06-02T17:12:32.644Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+bin
+obj
+out
+.git
+.gitignore
+README.md
+.vscode
+.idea
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.DS_Store
+logs
+*.log

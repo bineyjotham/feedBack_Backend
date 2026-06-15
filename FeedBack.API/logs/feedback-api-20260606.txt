@@ -1,0 +1,628 @@
+2026-06-06 21:42:48.726 +00:00 [INF] Start installing Hangfire SQL objects...
+2026-06-06 21:42:48.955 +00:00 [INF] Hangfire SQL objects installed.
+2026-06-06 21:42:50.014 +00:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-06 21:42:50.421 +00:00 [INF] Executed DbCommand (397ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2026-06-06 21:42:50.663 +00:00 [INF] Executed DbCommand (108ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-06-06 21:42:50.685 +00:00 [INF] User profile is available. Using 'C:\Users\ITIntern01\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-06 21:42:50.746 +00:00 [INF] Background Email Service is starting
+2026-06-06 21:42:50.849 +00:00 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:42:51.009 +00:00 [INF] Now listening on: http://localhost:5175
+2026-06-06 21:42:51.013 +00:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .\SQLEXPRESS@FeedbackDB_Hangfire'
+2026-06-06 21:42:51.014 +00:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-06-06 21:42:51.015 +00:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-06-06 21:42:51.022 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-06 21:42:51.023 +00:00 [INF] Hosting environment: Development
+2026-06-06 21:42:51.024 +00:00 [INF] Content root path: C:\Users\ITIntern01\Web_App\Feedback\FeedBack.API\FeedBack.API
+2026-06-06 21:42:51.086 +00:00 [INF] Server xdsitnspjotham:25832:c1e65aae successfully announced in 63.78 ms
+2026-06-06 21:42:51.088 +00:00 [INF] Server xdsitnspjotham:25832:c1e65aae is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-06-06 21:42:51.094 +00:00 [INF] Server xdsitnspjotham:25832:c1e65aae all the dispatchers started
+2026-06-06 21:42:51.367 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[AttemptCount], [e].[CreatedAt], [e].[ErrorMessage], [e].[FromEmail], [e].[HtmlBody], [e].[LastAttemptAt], [e].[MaxAttempts], [e].[ReplyTo], [e].[SentAt], [e].[Status], [e].[Subject], [e].[TicketNumber], [e].[ToEmail]
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3) AND [e].[AttemptCount] < [e].[MaxAttempts]
+ORDER BY [e].[CreatedAt]
+2026-06-06 21:43:06.291 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[AttemptCount], [e].[CreatedAt], [e].[ErrorMessage], [e].[FromEmail], [e].[HtmlBody], [e].[LastAttemptAt], [e].[MaxAttempts], [e].[ReplyTo], [e].[SentAt], [e].[Status], [e].[Subject], [e].[TicketNumber], [e].[ToEmail]
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3) AND [e].[AttemptCount] < [e].[MaxAttempts]
+ORDER BY [e].[CreatedAt]
+2026-06-06 21:43:20.863 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:43:50.870 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:44:06.334 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[AttemptCount], [e].[CreatedAt], [e].[ErrorMessage], [e].[FromEmail], [e].[HtmlBody], [e].[LastAttemptAt], [e].[MaxAttempts], [e].[ReplyTo], [e].[SentAt], [e].[Status], [e].[Subject], [e].[TicketNumber], [e].[ToEmail]
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3) AND [e].[AttemptCount] < [e].[MaxAttempts]
+ORDER BY [e].[CreatedAt]
+2026-06-06 21:44:20.878 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:44:50.891 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:45:06.379 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[AttemptCount], [e].[CreatedAt], [e].[ErrorMessage], [e].[FromEmail], [e].[HtmlBody], [e].[LastAttemptAt], [e].[MaxAttempts], [e].[ReplyTo], [e].[SentAt], [e].[Status], [e].[Subject], [e].[TicketNumber], [e].[ToEmail]
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3) AND [e].[AttemptCount] < [e].[MaxAttempts]
+ORDER BY [e].[CreatedAt]
+2026-06-06 21:45:14.469 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/feedback/personnel - null null
+2026-06-06 21:45:14.469 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/feedback/personnel - null null
+2026-06-06 21:45:14.501 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:45:14.501 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:45:14.512 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/feedback/personnel - 204 null null 56.9884ms
+2026-06-06 21:45:14.512 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/feedback/personnel - 204 null null 57.315ms
+2026-06-06 21:45:14.521 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5175/api/feedback/personnel - application/json null
+2026-06-06 21:45:14.526 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:45:14.553 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.FeedbackController.GetPersonnel (FeedBack.API)'
+2026-06-06 21:45:14.564 +00:00 [INF] Route matched with {action = "GetPersonnel", controller = "Feedback"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPersonnel() on controller FeedBack.API.Controllers.FeedbackController (FeedBack.API).
+2026-06-06 21:45:14.582 +00:00 [INF] Executing action method FeedBack.API.Controllers.FeedbackController.GetPersonnel (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:45:14.591 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Name]
+FROM [Personnels] AS [p]
+ORDER BY [p].[Name]
+2026-06-06 21:45:14.597 +00:00 [INF] Executed action method FeedBack.API.Controllers.FeedbackController.GetPersonnel (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 11.1414ms.
+2026-06-06 21:45:14.602 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-06 21:45:14.620 +00:00 [INF] Executed action FeedBack.API.Controllers.FeedbackController.GetPersonnel (FeedBack.API) in 52.6215ms
+2026-06-06 21:45:14.622 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5175/api/feedback/personnel - application/json null
+2026-06-06 21:45:14.622 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.FeedbackController.GetPersonnel (FeedBack.API)'
+2026-06-06 21:45:14.624 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:45:14.626 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.FeedbackController.GetPersonnel (FeedBack.API)'
+2026-06-06 21:45:14.627 +00:00 [INF] Route matched with {action = "GetPersonnel", controller = "Feedback"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPersonnel() on controller FeedBack.API.Controllers.FeedbackController (FeedBack.API).
+2026-06-06 21:45:14.627 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5175/api/feedback/personnel - 200 null application/json; charset=utf-8 105.3872ms
+2026-06-06 21:45:14.629 +00:00 [INF] Executing action method FeedBack.API.Controllers.FeedbackController.GetPersonnel (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:45:14.632 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Name]
+FROM [Personnels] AS [p]
+ORDER BY [p].[Name]
+2026-06-06 21:45:14.634 +00:00 [INF] Executed action method FeedBack.API.Controllers.FeedbackController.GetPersonnel (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.8159ms.
+2026-06-06 21:45:14.636 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-06-06 21:45:14.637 +00:00 [INF] Executed action FeedBack.API.Controllers.FeedbackController.GetPersonnel (FeedBack.API) in 9.1415ms
+2026-06-06 21:45:14.639 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.FeedbackController.GetPersonnel (FeedBack.API)'
+2026-06-06 21:45:14.640 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5175/api/feedback/personnel - 200 null application/json; charset=utf-8 18.5176ms
+2026-06-06 21:45:20.896 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:45:38.219 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/feedback/submit - null null
+2026-06-06 21:45:38.222 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:45:38.223 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/feedback/submit - 204 null null 4.112ms
+2026-06-06 21:45:38.227 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5175/api/feedback/submit - application/json 60
+2026-06-06 21:45:38.229 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:45:38.251 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API)'
+2026-06-06 21:45:38.259 +00:00 [INF] Route matched with {action = "SubmitFeedback", controller = "Feedback"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SubmitFeedback(FeedBack.API.Dtos.FeedbackRequestDto) on controller FeedBack.API.Controllers.FeedbackController (FeedBack.API).
+2026-06-06 21:45:38.292 +00:00 [INF] Executing action method FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:45:38.295 +00:00 [INF] Received feedback submission request
+2026-06-06 21:45:38.439 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 2000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 255), @p4='?' (Size = 200), @p5='?' (Size = 200), @p6='?' (Size = 45), @p7='?' (Size = 100), @p8='?' (Size = 200), @p9='?' (DbType = Int32), @p10='?' (DbType = DateTime2), @p11='?' (DbType = Int32), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32), @p14='?' (Size = 50), @p15='?' (Size = 500)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Feedbacks] ([Category], [Comment], [CreatedAt], [CustomerEmail], [CustomerName], [Institution], [IpAddress], [Notes], [PersonnelName], [Rating], [ReviewedAt], [ReviewedByUserId], [Source], [Status], [TicketNumber], [UserAgent])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2026-06-06 21:45:38.458 +00:00 [INF] Feedback saved to database. Ticket: XDS-FB-20260606-5517
+2026-06-06 21:45:38.461 +00:00 [INF] Executed action method FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 168.4702ms.
+2026-06-06 21:45:38.463 +00:00 [INF] Executing OkObjectResult, writing value of type 'FeedBack.API.Dtos.FeedbackResponseDto'.
+2026-06-06 21:45:38.474 +00:00 [INF] Executed action FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API) in 211.9311ms
+2026-06-06 21:45:38.475 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API)'
+2026-06-06 21:45:38.476 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5175/api/feedback/submit - 200 null application/json; charset=utf-8 249.7338ms
+2026-06-06 21:45:50.900 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:46:06.450 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[AttemptCount], [e].[CreatedAt], [e].[ErrorMessage], [e].[FromEmail], [e].[HtmlBody], [e].[LastAttemptAt], [e].[MaxAttempts], [e].[ReplyTo], [e].[SentAt], [e].[Status], [e].[Subject], [e].[TicketNumber], [e].[ToEmail]
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3) AND [e].[AttemptCount] < [e].[MaxAttempts]
+ORDER BY [e].[CreatedAt]
+2026-06-06 21:46:20.917 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:46:50.922 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:46:52.165 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/feedback/submit - null null
+2026-06-06 21:46:52.168 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:46:52.169 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/feedback/submit - 204 null null 4.2252ms
+2026-06-06 21:46:52.172 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5175/api/feedback/submit - application/json 87
+2026-06-06 21:46:52.174 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:46:52.176 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API)'
+2026-06-06 21:46:52.177 +00:00 [INF] Route matched with {action = "SubmitFeedback", controller = "Feedback"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SubmitFeedback(FeedBack.API.Dtos.FeedbackRequestDto) on controller FeedBack.API.Controllers.FeedbackController (FeedBack.API).
+2026-06-06 21:46:52.180 +00:00 [INF] Executing action method FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:46:52.181 +00:00 [INF] Received feedback submission request
+2026-06-06 21:46:52.186 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 2000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 255), @p4='?' (Size = 200), @p5='?' (Size = 200), @p6='?' (Size = 45), @p7='?' (Size = 100), @p8='?' (Size = 200), @p9='?' (DbType = Int32), @p10='?' (DbType = DateTime2), @p11='?' (DbType = Int32), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32), @p14='?' (Size = 50), @p15='?' (Size = 500)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Feedbacks] ([Category], [Comment], [CreatedAt], [CustomerEmail], [CustomerName], [Institution], [IpAddress], [Notes], [PersonnelName], [Rating], [ReviewedAt], [ReviewedByUserId], [Source], [Status], [TicketNumber], [UserAgent])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2026-06-06 21:46:52.188 +00:00 [INF] Feedback saved to database. Ticket: XDS-FB-20260606-0139
+2026-06-06 21:46:52.189 +00:00 [INF] Executed action method FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 7.7558ms.
+2026-06-06 21:46:52.190 +00:00 [INF] Executing OkObjectResult, writing value of type 'FeedBack.API.Dtos.FeedbackResponseDto'.
+2026-06-06 21:46:52.192 +00:00 [INF] Executed action FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API) in 13.4612ms
+2026-06-06 21:46:52.193 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API)'
+2026-06-06 21:46:52.194 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5175/api/feedback/submit - 200 null application/json; charset=utf-8 22.1003ms
+2026-06-06 21:47:06.498 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[AttemptCount], [e].[CreatedAt], [e].[ErrorMessage], [e].[FromEmail], [e].[HtmlBody], [e].[LastAttemptAt], [e].[MaxAttempts], [e].[ReplyTo], [e].[SentAt], [e].[Status], [e].[Subject], [e].[TicketNumber], [e].[ToEmail]
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3) AND [e].[AttemptCount] < [e].[MaxAttempts]
+ORDER BY [e].[CreatedAt]
+2026-06-06 21:47:19.145 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/auth/login - null null
+2026-06-06 21:47:19.148 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:47:19.149 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/auth/login - 204 null null 3.9587ms
+2026-06-06 21:47:19.152 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5175/api/auth/login - application/json 58
+2026-06-06 21:47:19.155 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:47:19.157 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.AuthController.Login (FeedBack.API)'
+2026-06-06 21:47:19.161 +00:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(FeedBack.API.Dtos.LoginRequestDto) on controller FeedBack.API.Controllers.AuthController (FeedBack.API).
+2026-06-06 21:47:19.164 +00:00 [INF] Executing action method FeedBack.API.Controllers.AuthController.Login (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:47:19.178 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ToLower_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[LastLoginAt], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__ToLower_0
+2026-06-06 21:47:19.502 +00:00 [WRN] Failed login attempt for email: admin@xdsdata.com
+2026-06-06 21:47:19.505 +00:00 [INF] Executed action method FeedBack.API.Controllers.AuthController.Login (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult in 339.983ms.
+2026-06-06 21:47:19.506 +00:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'FeedBack.API.Dtos.AuthResponseDto'.
+2026-06-06 21:47:19.509 +00:00 [INF] Executed action FeedBack.API.Controllers.AuthController.Login (FeedBack.API) in 346.9934ms
+2026-06-06 21:47:19.510 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.AuthController.Login (FeedBack.API)'
+2026-06-06 21:47:19.511 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5175/api/auth/login - 401 null application/json; charset=utf-8 358.8899ms
+2026-06-06 21:47:20.938 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:47:36.632 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/auth/login - null null
+2026-06-06 21:47:36.635 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:47:36.636 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/auth/login - 204 null null 4.0025ms
+2026-06-06 21:47:36.639 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5175/api/auth/login - application/json 58
+2026-06-06 21:47:36.641 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:47:36.643 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.AuthController.Login (FeedBack.API)'
+2026-06-06 21:47:36.644 +00:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(FeedBack.API.Dtos.LoginRequestDto) on controller FeedBack.API.Controllers.AuthController (FeedBack.API).
+2026-06-06 21:47:36.646 +00:00 [INF] Executing action method FeedBack.API.Controllers.AuthController.Login (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:47:36.648 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ToLower_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[LastLoginAt], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__ToLower_0
+2026-06-06 21:47:36.764 +00:00 [WRN] Failed login attempt for email: admin@xdsdata.com
+2026-06-06 21:47:36.765 +00:00 [INF] Executed action method FeedBack.API.Controllers.AuthController.Login (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult in 117.9293ms.
+2026-06-06 21:47:36.766 +00:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'FeedBack.API.Dtos.AuthResponseDto'.
+2026-06-06 21:47:36.767 +00:00 [INF] Executed action FeedBack.API.Controllers.AuthController.Login (FeedBack.API) in 121.8908ms
+2026-06-06 21:47:36.768 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.AuthController.Login (FeedBack.API)'
+2026-06-06 21:47:36.769 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5175/api/auth/login - 401 null application/json; charset=utf-8 130.611ms
+2026-06-06 21:47:50.956 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:47:53.849 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/auth/login - null null
+2026-06-06 21:47:53.852 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:47:53.852 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/auth/login - 204 null null 3.1959ms
+2026-06-06 21:47:53.855 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5175/api/auth/login - application/json 49
+2026-06-06 21:47:53.857 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:47:53.858 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.AuthController.Login (FeedBack.API)'
+2026-06-06 21:47:53.859 +00:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(FeedBack.API.Dtos.LoginRequestDto) on controller FeedBack.API.Controllers.AuthController (FeedBack.API).
+2026-06-06 21:47:53.861 +00:00 [INF] Executing action method FeedBack.API.Controllers.AuthController.Login (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:47:53.863 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ToLower_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[LastLoginAt], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__ToLower_0
+2026-06-06 21:47:53.983 +00:00 [WRN] Failed login attempt for email: admin@xdsdata.com
+2026-06-06 21:47:53.984 +00:00 [INF] Executed action method FeedBack.API.Controllers.AuthController.Login (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult in 121.739ms.
+2026-06-06 21:47:53.985 +00:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'FeedBack.API.Dtos.AuthResponseDto'.
+2026-06-06 21:47:53.987 +00:00 [INF] Executed action FeedBack.API.Controllers.AuthController.Login (FeedBack.API) in 126.3299ms
+2026-06-06 21:47:53.988 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.AuthController.Login (FeedBack.API)'
+2026-06-06 21:47:53.989 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5175/api/auth/login - 401 null application/json; charset=utf-8 134.0692ms
+2026-06-06 21:48:06.564 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[AttemptCount], [e].[CreatedAt], [e].[ErrorMessage], [e].[FromEmail], [e].[HtmlBody], [e].[LastAttemptAt], [e].[MaxAttempts], [e].[ReplyTo], [e].[SentAt], [e].[Status], [e].[Subject], [e].[TicketNumber], [e].[ToEmail]
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3) AND [e].[AttemptCount] < [e].[MaxAttempts]
+ORDER BY [e].[CreatedAt]
+2026-06-06 21:48:07.104 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/auth/login - null null
+2026-06-06 21:48:07.107 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:48:07.108 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/auth/login - 204 null null 3.8409ms
+2026-06-06 21:48:07.111 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5175/api/auth/login - application/json 52
+2026-06-06 21:48:07.114 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:48:07.115 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.AuthController.Login (FeedBack.API)'
+2026-06-06 21:48:07.116 +00:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(FeedBack.API.Dtos.LoginRequestDto) on controller FeedBack.API.Controllers.AuthController (FeedBack.API).
+2026-06-06 21:48:07.118 +00:00 [INF] Executing action method FeedBack.API.Controllers.AuthController.Login (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:48:07.121 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ToLower_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[Email], [u].[FullName], [u].[IsActive], [u].[LastLoginAt], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__ToLower_0
+2026-06-06 21:48:07.246 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [LastLoginAt] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+2026-06-06 21:48:07.262 +00:00 [INF] Executed action method FeedBack.API.Controllers.AuthController.Login (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 142.3979ms.
+2026-06-06 21:48:07.263 +00:00 [INF] Executing OkObjectResult, writing value of type 'FeedBack.API.Dtos.AuthResponseDto'.
+2026-06-06 21:48:07.265 +00:00 [INF] Executed action FeedBack.API.Controllers.AuthController.Login (FeedBack.API) in 147.3319ms
+2026-06-06 21:48:07.266 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.AuthController.Login (FeedBack.API)'
+2026-06-06 21:48:07.267 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5175/api/auth/login - 200 null application/json; charset=utf-8 155.8385ms
+2026-06-06 21:48:07.295 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/personnel - null null
+2026-06-06 21:48:07.296 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/dashboard/feedbacks?limit=1000 - null null
+2026-06-06 21:48:07.298 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:48:07.300 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:48:07.301 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/personnel - 204 null null 5.5986ms
+2026-06-06 21:48:07.301 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/dashboard/feedbacks?limit=1000 - 204 null null 5.141ms
+2026-06-06 21:48:07.305 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5175/api/dashboard/feedbacks?limit=1000 - application/json null
+2026-06-06 21:48:07.308 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5175/api/personnel - application/json null
+2026-06-06 21:48:07.311 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:48:07.313 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:48:07.342 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API)'
+2026-06-06 21:48:07.342 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API)'
+2026-06-06 21:48:07.346 +00:00 [INF] Route matched with {action = "GetAll", controller = "Personnel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller FeedBack.API.Controllers.PersonnelController (FeedBack.API).
+2026-06-06 21:48:07.347 +00:00 [INF] Route matched with {action = "GetFeedbacks", controller = "Dashboard"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetFeedbacks(System.String, System.String, System.String, Int32) on controller FeedBack.API.Controllers.DashboardController (FeedBack.API).
+2026-06-06 21:48:07.349 +00:00 [INF] Executing action method FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:48:07.354 +00:00 [INF] Executing action method FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:48:07.360 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Name], [p].[CreatedAt]
+FROM [Personnels] AS [p]
+ORDER BY [p].[Name]
+2026-06-06 21:48:07.363 +00:00 [INF] Executed action method FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 12.0129ms.
+2026-06-06 21:48:07.365 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FeedBack.API.Dtos.PersonnelDto, FeedBack.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 21:48:07.369 +00:00 [INF] Executed action FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API) in 20.9929ms
+2026-06-06 21:48:07.371 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API)'
+2026-06-06 21:48:07.372 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5175/api/personnel - 200 null application/json; charset=utf-8 64.0256ms
+2026-06-06 21:48:07.383 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [f].[Id], [f].[TicketNumber], [f].[Source], [f].[Rating], [f].[Comment], [f].[CustomerName], [f].[CustomerEmail], [f].[Institution], [f].[Category], [f].[PersonnelName], [f].[CreatedAt]
+FROM [Feedbacks] AS [f]
+ORDER BY [f].[CreatedAt] DESC
+2026-06-06 21:48:07.386 +00:00 [INF] Executed action method FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 31.0265ms.
+2026-06-06 21:48:07.388 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType1`11[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], FeedBack.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 21:48:07.392 +00:00 [INF] Executed action FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API) in 42.4866ms
+2026-06-06 21:48:07.394 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API)'
+2026-06-06 21:48:07.395 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5175/api/dashboard/feedbacks?limit=1000 - 200 null application/json; charset=utf-8 90.1967ms
+2026-06-06 21:48:20.264 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/dashboard/feedbacks?limit=1000 - null null
+2026-06-06 21:48:20.264 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/personnel - null null
+2026-06-06 21:48:20.286 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:48:20.290 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:48:20.291 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/dashboard/feedbacks?limit=1000 - 204 null null 27.0654ms
+2026-06-06 21:48:20.292 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/personnel - 204 null null 27.3695ms
+2026-06-06 21:48:20.304 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5175/api/personnel - application/json null
+2026-06-06 21:48:20.308 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5175/api/dashboard/feedbacks?limit=1000 - application/json null
+2026-06-06 21:48:20.311 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:48:20.314 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:48:20.317 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API)'
+2026-06-06 21:48:20.317 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API)'
+2026-06-06 21:48:20.319 +00:00 [INF] Route matched with {action = "GetFeedbacks", controller = "Dashboard"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetFeedbacks(System.String, System.String, System.String, Int32) on controller FeedBack.API.Controllers.DashboardController (FeedBack.API).
+2026-06-06 21:48:20.325 +00:00 [INF] Route matched with {action = "GetAll", controller = "Personnel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller FeedBack.API.Controllers.PersonnelController (FeedBack.API).
+2026-06-06 21:48:20.328 +00:00 [INF] Executing action method FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:48:20.329 +00:00 [INF] Executing action method FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:48:20.339 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [f].[Id], [f].[TicketNumber], [f].[Source], [f].[Rating], [f].[Comment], [f].[CustomerName], [f].[CustomerEmail], [f].[Institution], [f].[Category], [f].[PersonnelName], [f].[CreatedAt]
+FROM [Feedbacks] AS [f]
+ORDER BY [f].[CreatedAt] DESC
+2026-06-06 21:48:20.356 +00:00 [INF] Executed action method FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 24.5984ms.
+2026-06-06 21:48:20.358 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType1`11[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], FeedBack.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 21:48:20.360 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Name], [p].[CreatedAt]
+FROM [Personnels] AS [p]
+ORDER BY [p].[Name]
+2026-06-06 21:48:20.360 +00:00 [INF] Executed action FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API) in 32.7847ms
+2026-06-06 21:48:20.362 +00:00 [INF] Executed action method FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 26.337ms.
+2026-06-06 21:48:20.362 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API)'
+2026-06-06 21:48:20.364 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FeedBack.API.Dtos.PersonnelDto, FeedBack.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 21:48:20.365 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5175/api/dashboard/feedbacks?limit=1000 - 200 null application/json; charset=utf-8 56.9033ms
+2026-06-06 21:48:20.366 +00:00 [INF] Executed action FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API) in 37.4706ms
+2026-06-06 21:48:20.371 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API)'
+2026-06-06 21:48:20.373 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5175/api/personnel - 200 null application/json; charset=utf-8 69.5062ms
+2026-06-06 21:48:20.972 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:48:50.989 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:49:06.630 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[AttemptCount], [e].[CreatedAt], [e].[ErrorMessage], [e].[FromEmail], [e].[HtmlBody], [e].[LastAttemptAt], [e].[MaxAttempts], [e].[ReplyTo], [e].[SentAt], [e].[Status], [e].[Subject], [e].[TicketNumber], [e].[ToEmail]
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3) AND [e].[AttemptCount] < [e].[MaxAttempts]
+ORDER BY [e].[CreatedAt]
+2026-06-06 21:49:21.001 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:49:51.019 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:50:06.691 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[AttemptCount], [e].[CreatedAt], [e].[ErrorMessage], [e].[FromEmail], [e].[HtmlBody], [e].[LastAttemptAt], [e].[MaxAttempts], [e].[ReplyTo], [e].[SentAt], [e].[Status], [e].[Subject], [e].[TicketNumber], [e].[ToEmail]
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3) AND [e].[AttemptCount] < [e].[MaxAttempts]
+ORDER BY [e].[CreatedAt]
+2026-06-06 21:50:21.023 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:50:25.029 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/feedback/submit - null null
+2026-06-06 21:50:25.032 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:50:25.033 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/feedback/submit - 204 null null 3.8518ms
+2026-06-06 21:50:25.036 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5175/api/feedback/submit - application/json 161
+2026-06-06 21:50:25.038 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:50:25.039 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API)'
+2026-06-06 21:50:25.040 +00:00 [INF] Route matched with {action = "SubmitFeedback", controller = "Feedback"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SubmitFeedback(FeedBack.API.Dtos.FeedbackRequestDto) on controller FeedBack.API.Controllers.FeedbackController (FeedBack.API).
+2026-06-06 21:50:25.043 +00:00 [INF] Executing action method FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:50:25.044 +00:00 [INF] Received feedback submission request
+2026-06-06 21:50:25.048 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 2000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 255), @p4='?' (Size = 200), @p5='?' (Size = 200), @p6='?' (Size = 45), @p7='?' (Size = 100), @p8='?' (Size = 200), @p9='?' (DbType = Int32), @p10='?' (DbType = DateTime2), @p11='?' (DbType = Int32), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32), @p14='?' (Size = 50), @p15='?' (Size = 500)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Feedbacks] ([Category], [Comment], [CreatedAt], [CustomerEmail], [CustomerName], [Institution], [IpAddress], [Notes], [PersonnelName], [Rating], [ReviewedAt], [ReviewedByUserId], [Source], [Status], [TicketNumber], [UserAgent])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2026-06-06 21:50:25.050 +00:00 [INF] Feedback saved to database. Ticket: XDS-FB-20260606-0336
+2026-06-06 21:50:25.089 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 100), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Int32), @p7='?' (Size = 100), @p8='?' (DbType = DateTime2), @p9='?' (DbType = Int32), @p10='?' (Size = 200), @p11='?' (Size = 50), @p12='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [EmailQueues] ([AttemptCount], [CreatedAt], [ErrorMessage], [FromEmail], [HtmlBody], [LastAttemptAt], [MaxAttempts], [ReplyTo], [SentAt], [Status], [Subject], [TicketNumber], [ToEmail])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12);
+2026-06-06 21:50:25.092 +00:00 [INF] Email queued for staff@inventory.com with ticket XDS-FB-20260606-0336
+2026-06-06 21:50:25.094 +00:00 [INF] Executed action method FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 49.8708ms.
+2026-06-06 21:50:25.095 +00:00 [INF] Executing OkObjectResult, writing value of type 'FeedBack.API.Dtos.FeedbackResponseDto'.
+2026-06-06 21:50:25.096 +00:00 [INF] Executed action FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API) in 54.6094ms
+2026-06-06 21:50:25.098 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API)'
+2026-06-06 21:50:25.099 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5175/api/feedback/submit - 200 null application/json; charset=utf-8 62.5909ms
+2026-06-06 21:50:51.030 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:50:51.033 +00:00 [INF] Found 1 pending emails to process
+2026-06-06 21:50:51.036 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[AttemptCount], [e].[CreatedAt], [e].[ErrorMessage], [e].[FromEmail], [e].[HtmlBody], [e].[LastAttemptAt], [e].[MaxAttempts], [e].[ReplyTo], [e].[SentAt], [e].[Status], [e].[Subject], [e].[TicketNumber], [e].[ToEmail]
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3) AND [e].[AttemptCount] < [e].[MaxAttempts]
+ORDER BY [e].[CreatedAt]
+2026-06-06 21:50:51.038 +00:00 [INF] Processing 1 pending emails
+2026-06-06 21:50:52.137 +00:00 [INF] Email sent successfully to staff@inventory.com for ticket XDS-FB-20260606-0336
+2026-06-06 21:50:52.141 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@p4='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [EmailQueues] SET [AttemptCount] = @p0, [LastAttemptAt] = @p1, [SentAt] = @p2, [Status] = @p3
+OUTPUT 1
+WHERE [Id] = @p4;
+2026-06-06 21:51:06.738 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[AttemptCount], [e].[CreatedAt], [e].[ErrorMessage], [e].[FromEmail], [e].[HtmlBody], [e].[LastAttemptAt], [e].[MaxAttempts], [e].[ReplyTo], [e].[SentAt], [e].[Status], [e].[Subject], [e].[TicketNumber], [e].[ToEmail]
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3) AND [e].[AttemptCount] < [e].[MaxAttempts]
+ORDER BY [e].[CreatedAt]
+2026-06-06 21:51:12.362 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/feedback/submit - null null
+2026-06-06 21:51:12.365 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:51:12.366 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/feedback/submit - 204 null null 4.2895ms
+2026-06-06 21:51:12.370 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5175/api/feedback/submit - application/json 152
+2026-06-06 21:51:12.373 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:51:12.374 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API)'
+2026-06-06 21:51:12.375 +00:00 [INF] Route matched with {action = "SubmitFeedback", controller = "Feedback"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SubmitFeedback(FeedBack.API.Dtos.FeedbackRequestDto) on controller FeedBack.API.Controllers.FeedbackController (FeedBack.API).
+2026-06-06 21:51:12.377 +00:00 [INF] Executing action method FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:51:12.378 +00:00 [INF] Received feedback submission request
+2026-06-06 21:51:12.382 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 2000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 255), @p4='?' (Size = 200), @p5='?' (Size = 200), @p6='?' (Size = 45), @p7='?' (Size = 100), @p8='?' (Size = 200), @p9='?' (DbType = Int32), @p10='?' (DbType = DateTime2), @p11='?' (DbType = Int32), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32), @p14='?' (Size = 50), @p15='?' (Size = 500)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Feedbacks] ([Category], [Comment], [CreatedAt], [CustomerEmail], [CustomerName], [Institution], [IpAddress], [Notes], [PersonnelName], [Rating], [ReviewedAt], [ReviewedByUserId], [Source], [Status], [TicketNumber], [UserAgent])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2026-06-06 21:51:12.384 +00:00 [INF] Feedback saved to database. Ticket: XDS-FB-20260606-1843
+2026-06-06 21:51:12.387 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 100), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Int32), @p7='?' (Size = 100), @p8='?' (DbType = DateTime2), @p9='?' (DbType = Int32), @p10='?' (Size = 200), @p11='?' (Size = 50), @p12='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [EmailQueues] ([AttemptCount], [CreatedAt], [ErrorMessage], [FromEmail], [HtmlBody], [LastAttemptAt], [MaxAttempts], [ReplyTo], [SentAt], [Status], [Subject], [TicketNumber], [ToEmail])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12);
+2026-06-06 21:51:12.389 +00:00 [INF] Email queued for wwe@data.com with ticket XDS-FB-20260606-1843
+2026-06-06 21:51:12.390 +00:00 [INF] Executed action method FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 11.7204ms.
+2026-06-06 21:51:12.391 +00:00 [INF] Executing OkObjectResult, writing value of type 'FeedBack.API.Dtos.FeedbackResponseDto'.
+2026-06-06 21:51:12.392 +00:00 [INF] Executed action FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API) in 15.77ms
+2026-06-06 21:51:12.393 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API)'
+2026-06-06 21:51:12.394 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5175/api/feedback/submit - 200 null application/json; charset=utf-8 24.007ms
+2026-06-06 21:51:22.156 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:51:22.158 +00:00 [INF] Found 1 pending emails to process
+2026-06-06 21:51:22.160 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[AttemptCount], [e].[CreatedAt], [e].[ErrorMessage], [e].[FromEmail], [e].[HtmlBody], [e].[LastAttemptAt], [e].[MaxAttempts], [e].[ReplyTo], [e].[SentAt], [e].[Status], [e].[Subject], [e].[TicketNumber], [e].[ToEmail]
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3) AND [e].[AttemptCount] < [e].[MaxAttempts]
+ORDER BY [e].[CreatedAt]
+2026-06-06 21:51:22.162 +00:00 [INF] Processing 1 pending emails
+2026-06-06 21:51:23.162 +00:00 [INF] Email sent successfully to wwe@data.com for ticket XDS-FB-20260606-1843
+2026-06-06 21:51:23.167 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@p4='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [EmailQueues] SET [AttemptCount] = @p0, [LastAttemptAt] = @p1, [SentAt] = @p2, [Status] = @p3
+OUTPUT 1
+WHERE [Id] = @p4;
+2026-06-06 21:51:23.252 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/personnel - null null
+2026-06-06 21:51:23.252 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/dashboard/feedbacks?limit=1000 - null null
+2026-06-06 21:51:23.254 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:51:23.256 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:51:23.257 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/personnel - 204 null null 5.0853ms
+2026-06-06 21:51:23.257 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/dashboard/feedbacks?limit=1000 - 204 null null 4.929ms
+2026-06-06 21:51:23.260 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5175/api/dashboard/feedbacks?limit=1000 - application/json null
+2026-06-06 21:51:23.263 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5175/api/personnel - application/json null
+2026-06-06 21:51:23.265 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:51:23.267 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:51:23.268 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API)'
+2026-06-06 21:51:23.268 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API)'
+2026-06-06 21:51:23.269 +00:00 [INF] Route matched with {action = "GetAll", controller = "Personnel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller FeedBack.API.Controllers.PersonnelController (FeedBack.API).
+2026-06-06 21:51:23.270 +00:00 [INF] Route matched with {action = "GetFeedbacks", controller = "Dashboard"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetFeedbacks(System.String, System.String, System.String, Int32) on controller FeedBack.API.Controllers.DashboardController (FeedBack.API).
+2026-06-06 21:51:23.272 +00:00 [INF] Executing action method FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:51:23.273 +00:00 [INF] Executing action method FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:51:23.276 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Name], [p].[CreatedAt]
+FROM [Personnels] AS [p]
+ORDER BY [p].[Name]
+2026-06-06 21:51:23.278 +00:00 [INF] Executed action method FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.8099ms.
+2026-06-06 21:51:23.280 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FeedBack.API.Dtos.PersonnelDto, FeedBack.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 21:51:23.281 +00:00 [INF] Executed action FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API) in 9.5762ms
+2026-06-06 21:51:23.281 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [f].[Id], [f].[TicketNumber], [f].[Source], [f].[Rating], [f].[Comment], [f].[CustomerName], [f].[CustomerEmail], [f].[Institution], [f].[Category], [f].[PersonnelName], [f].[CreatedAt]
+FROM [Feedbacks] AS [f]
+ORDER BY [f].[CreatedAt] DESC
+2026-06-06 21:51:23.282 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API)'
+2026-06-06 21:51:23.284 +00:00 [INF] Executed action method FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 8.9532ms.
+2026-06-06 21:51:23.285 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5175/api/personnel - 200 null application/json; charset=utf-8 21.971ms
+2026-06-06 21:51:23.286 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType1`11[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], FeedBack.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 21:51:23.289 +00:00 [INF] Executed action FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API) in 16.3694ms
+2026-06-06 21:51:23.291 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API)'
+2026-06-06 21:51:23.292 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5175/api/dashboard/feedbacks?limit=1000 - 200 null application/json; charset=utf-8 32.0207ms
+2026-06-06 21:51:53.182 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:52:06.791 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[AttemptCount], [e].[CreatedAt], [e].[ErrorMessage], [e].[FromEmail], [e].[HtmlBody], [e].[LastAttemptAt], [e].[MaxAttempts], [e].[ReplyTo], [e].[SentAt], [e].[Status], [e].[Subject], [e].[TicketNumber], [e].[ToEmail]
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3) AND [e].[AttemptCount] < [e].[MaxAttempts]
+ORDER BY [e].[CreatedAt]
+2026-06-06 21:52:23.196 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:52:53.210 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:53:02.372 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/feedback/submit - null null
+2026-06-06 21:53:02.375 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:53:02.375 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/feedback/submit - 204 null null 3.8285ms
+2026-06-06 21:53:02.379 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:5175/api/feedback/submit - application/json 211
+2026-06-06 21:53:02.381 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:53:02.383 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API)'
+2026-06-06 21:53:02.384 +00:00 [INF] Route matched with {action = "SubmitFeedback", controller = "Feedback"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SubmitFeedback(FeedBack.API.Dtos.FeedbackRequestDto) on controller FeedBack.API.Controllers.FeedbackController (FeedBack.API).
+2026-06-06 21:53:02.386 +00:00 [INF] Executing action method FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:53:02.387 +00:00 [INF] Received feedback submission request
+2026-06-06 21:53:02.391 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 2000), @p2='?' (DbType = DateTime2), @p3='?' (Size = 255), @p4='?' (Size = 200), @p5='?' (Size = 200), @p6='?' (Size = 45), @p7='?' (Size = 100), @p8='?' (Size = 200), @p9='?' (DbType = Int32), @p10='?' (DbType = DateTime2), @p11='?' (DbType = Int32), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32), @p14='?' (Size = 50), @p15='?' (Size = 500)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Feedbacks] ([Category], [Comment], [CreatedAt], [CustomerEmail], [CustomerName], [Institution], [IpAddress], [Notes], [PersonnelName], [Rating], [ReviewedAt], [ReviewedByUserId], [Source], [Status], [TicketNumber], [UserAgent])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2026-06-06 21:53:02.393 +00:00 [INF] Feedback saved to database. Ticket: XDS-FB-20260606-7399
+2026-06-06 21:53:02.397 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 100), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Int32), @p7='?' (Size = 100), @p8='?' (DbType = DateTime2), @p9='?' (DbType = Int32), @p10='?' (Size = 200), @p11='?' (Size = 50), @p12='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [EmailQueues] ([AttemptCount], [CreatedAt], [ErrorMessage], [FromEmail], [HtmlBody], [LastAttemptAt], [MaxAttempts], [ReplyTo], [SentAt], [Status], [Subject], [TicketNumber], [ToEmail])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12);
+2026-06-06 21:53:02.398 +00:00 [INF] Email queued for mensahsky9@gmail.com with ticket XDS-FB-20260606-7399
+2026-06-06 21:53:02.400 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 100), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Int32), @p7='?' (Size = 100), @p8='?' (DbType = DateTime2), @p9='?' (DbType = Int32), @p10='?' (Size = 200), @p11='?' (Size = 50), @p12='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [EmailQueues] ([AttemptCount], [CreatedAt], [ErrorMessage], [FromEmail], [HtmlBody], [LastAttemptAt], [MaxAttempts], [ReplyTo], [SentAt], [Status], [Subject], [TicketNumber], [ToEmail])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12);
+2026-06-06 21:53:02.402 +00:00 [INF] Email queued for Raves@freaks.com with ticket XDS-FB-20260606-7399
+2026-06-06 21:53:02.403 +00:00 [INF] Executed action method FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 15.474ms.
+2026-06-06 21:53:02.404 +00:00 [INF] Executing OkObjectResult, writing value of type 'FeedBack.API.Dtos.FeedbackResponseDto'.
+2026-06-06 21:53:02.405 +00:00 [INF] Executed action FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API) in 19.6835ms
+2026-06-06 21:53:02.406 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.FeedbackController.SubmitFeedback (FeedBack.API)'
+2026-06-06 21:53:02.407 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:5175/api/feedback/submit - 200 null application/json; charset=utf-8 28.4723ms
+2026-06-06 21:53:05.692 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/personnel - null null
+2026-06-06 21:53:05.692 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/dashboard/feedbacks?limit=1000 - null null
+2026-06-06 21:53:05.695 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:53:05.696 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:53:05.697 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/personnel - 204 null null 5.0804ms
+2026-06-06 21:53:05.698 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/dashboard/feedbacks?limit=1000 - 204 null null 5.5704ms
+2026-06-06 21:53:05.700 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5175/api/dashboard/feedbacks?limit=1000 - application/json null
+2026-06-06 21:53:05.703 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5175/api/personnel - application/json null
+2026-06-06 21:53:05.705 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:53:05.707 +00:00 [INF] CORS policy execution successful.
+2026-06-06 21:53:05.708 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API)'
+2026-06-06 21:53:05.708 +00:00 [INF] Executing endpoint 'FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API)'
+2026-06-06 21:53:05.709 +00:00 [INF] Route matched with {action = "GetFeedbacks", controller = "Dashboard"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetFeedbacks(System.String, System.String, System.String, Int32) on controller FeedBack.API.Controllers.DashboardController (FeedBack.API).
+2026-06-06 21:53:05.710 +00:00 [INF] Route matched with {action = "GetAll", controller = "Personnel"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller FeedBack.API.Controllers.PersonnelController (FeedBack.API).
+2026-06-06 21:53:05.712 +00:00 [INF] Executing action method FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:53:05.713 +00:00 [INF] Executing action method FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API) - Validation state: "Valid"
+2026-06-06 21:53:05.716 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [f].[Id], [f].[TicketNumber], [f].[Source], [f].[Rating], [f].[Comment], [f].[CustomerName], [f].[CustomerEmail], [f].[Institution], [f].[Category], [f].[PersonnelName], [f].[CreatedAt]
+FROM [Feedbacks] AS [f]
+ORDER BY [f].[CreatedAt] DESC
+2026-06-06 21:53:05.716 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Name], [p].[CreatedAt]
+FROM [Personnels] AS [p]
+ORDER BY [p].[Name]
+2026-06-06 21:53:05.718 +00:00 [INF] Executed action method FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4.0039ms.
+2026-06-06 21:53:05.719 +00:00 [INF] Executed action method FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4.3981ms.
+2026-06-06 21:53:05.720 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType1`11[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], FeedBack.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 21:53:05.721 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[FeedBack.API.Dtos.PersonnelDto, FeedBack.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 21:53:05.723 +00:00 [INF] Executed action FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API) in 11.2654ms
+2026-06-06 21:53:05.723 +00:00 [INF] Executed action FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API) in 10.8282ms
+2026-06-06 21:53:05.724 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.DashboardController.GetFeedbacks (FeedBack.API)'
+2026-06-06 21:53:05.725 +00:00 [INF] Executed endpoint 'FeedBack.API.Controllers.PersonnelController.GetAll (FeedBack.API)'
+2026-06-06 21:53:05.726 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5175/api/dashboard/feedbacks?limit=1000 - 200 null application/json; charset=utf-8 26.015ms
+2026-06-06 21:53:05.727 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5175/api/personnel - 200 null application/json; charset=utf-8 24.462ms
+2026-06-06 21:53:06.829 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[AttemptCount], [e].[CreatedAt], [e].[ErrorMessage], [e].[FromEmail], [e].[HtmlBody], [e].[LastAttemptAt], [e].[MaxAttempts], [e].[ReplyTo], [e].[SentAt], [e].[Status], [e].[Subject], [e].[TicketNumber], [e].[ToEmail]
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3) AND [e].[AttemptCount] < [e].[MaxAttempts]
+ORDER BY [e].[CreatedAt]
+2026-06-06 21:53:06.831 +00:00 [INF] Processing 2 pending emails
+2026-06-06 21:53:07.900 +00:00 [INF] Email sent successfully to mensahsky9@gmail.com for ticket XDS-FB-20260606-7399
+2026-06-06 21:53:07.910 +00:00 [INF] Executed DbCommand (9ms) [Parameters=[@p4='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [EmailQueues] SET [AttemptCount] = @p0, [LastAttemptAt] = @p1, [SentAt] = @p2, [Status] = @p3
+OUTPUT 1
+WHERE [Id] = @p4;
+2026-06-06 21:53:08.069 +00:00 [INF] Email sent successfully to Raves@freaks.com for ticket XDS-FB-20260606-7399
+2026-06-06 21:53:08.072 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@p4='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [EmailQueues] SET [AttemptCount] = @p0, [LastAttemptAt] = @p1, [SentAt] = @p2, [Status] = @p3
+OUTPUT 1
+WHERE [Id] = @p4;
+2026-06-06 21:53:23.226 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:53:53.241 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-06 21:54:06.858 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[AttemptCount], [e].[CreatedAt], [e].[ErrorMessage], [e].[FromEmail], [e].[HtmlBody], [e].[LastAttemptAt], [e].[MaxAttempts], [e].[ReplyTo], [e].[SentAt], [e].[Status], [e].[Subject], [e].[TicketNumber], [e].[ToEmail]
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3) AND [e].[AttemptCount] < [e].[MaxAttempts]
+ORDER BY [e].[CreatedAt]
+2026-06-06 21:54:08.910 +00:00 [INF] Server xdsitnspjotham:25832:c1e65aae caught stopping signal...
+2026-06-06 21:54:08.912 +00:00 [INF] Application is shutting down...
+2026-06-06 21:54:08.925 +00:00 [INF] Server xdsitnspjotham:25832:c1e65aae All dispatchers stopped
+2026-06-06 21:54:08.929 +00:00 [INF] Server xdsitnspjotham:25832:c1e65aae successfully reported itself as stopped in 2.267 ms
+2026-06-06 21:54:08.930 +00:00 [INF] Server xdsitnspjotham:25832:c1e65aae has been stopped in total 18.0422 ms

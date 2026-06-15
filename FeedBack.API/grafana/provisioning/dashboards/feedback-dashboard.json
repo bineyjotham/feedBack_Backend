@@ -1,0 +1,92 @@
+{
+  "dashboard": {
+    "title": "Feedback API Monitoring",
+    "timezone": "browser",
+    "panels": [
+      {
+        "title": "API Request Rate",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(api_requests_total[5m])",
+            "legendFormat": "{{endpoint}} - {{method}}"
+          }
+        ]
+      },
+      {
+        "title": "Response Time (95th percentile)",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, rate(api_request_duration_milliseconds_bucket[5m]))",
+            "legendFormat": "{{endpoint}}"
+          }
+        ]
+      },
+      {
+        "title": "Error Rate",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(api_requests_total{status_code=~\"5..\"}[5m])",
+            "legendFormat": "5xx errors"
+          },
+          {
+            "expr": "rate(api_requests_total{status_code=~\"4..\"}[5m])",
+            "legendFormat": "4xx errors"
+          }
+        ]
+      },
+      {
+        "title": "Feedback Submissions",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(feedback_submitted_total[1h])",
+            "legendFormat": "{{source}} - {{rating_range}}"
+          }
+        ]
+      },
+      {
+        "title": "Email Queue Size",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "email_queue_size",
+            "legendFormat": "Queue size"
+          }
+        ]
+      },
+      {
+        "title": "Rate Limit Hits",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(ratelimit_hits_total[5m])",
+            "legendFormat": "{{endpoint}}"
+          }
+        ]
+      },
+      {
+        "title": "Database Query Performance",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, rate(database_query_duration_milliseconds_bucket[5m]))",
+            "legendFormat": "{{operation}}"
+          }
+        ]
+      },
+      {
+        "title": "Active Users",
+        "type": "singlestat",
+        "targets": [
+          {
+            "expr": "active_users_total"
+          }
+        ]
+      }
+    ]
+  },
+  "overwrite": true
+}
