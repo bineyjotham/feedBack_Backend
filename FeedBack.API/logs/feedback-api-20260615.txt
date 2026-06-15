@@ -1,0 +1,74 @@
+2026-06-15 10:56:51.179 +00:00 [INF] Start installing Hangfire SQL objects...
+2026-06-15 10:56:52.045 +00:00 [INF] Hangfire SQL objects installed.
+2026-06-15 10:56:53.080 +00:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-15 10:56:53.222 +00:00 [INF] Executed DbCommand (131ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+IF EXISTS
+    (SELECT *
+     FROM [sys].[objects] o
+     WHERE [o].[type] = 'U'
+     AND [o].[is_ms_shipped] = 0
+     AND NOT EXISTS (SELECT *
+         FROM [sys].[extended_properties] AS [ep]
+         WHERE [ep].[major_id] = [o].[object_id]
+             AND [ep].[minor_id] = 0
+             AND [ep].[class] = 1
+             AND [ep].[name] = N'microsoft_database_tools_support'
+    )
+)
+SELECT 1 ELSE SELECT 0
+2026-06-15 10:56:53.400 +00:00 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-06-15 10:56:53.423 +00:00 [INF] User profile is available. Using 'C:\Users\ITIntern01\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-15 10:56:53.623 +00:00 [INF] Background Email Service is starting
+2026-06-15 10:56:53.685 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-15 10:56:53.940 +00:00 [INF] Now listening on: http://localhost:5175
+2026-06-15 10:56:53.945 +00:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .\SQLEXPRESS@FeedbackDB_Hangfire'
+2026-06-15 10:56:53.945 +00:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2026-06-15 10:56:53.946 +00:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2026-06-15 10:56:53.958 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-15 10:56:53.959 +00:00 [INF] Hosting environment: Development
+2026-06-15 10:56:53.959 +00:00 [INF] Content root path: C:\Users\ITIntern01\Web_App\Feedback\FeedBack.API\FeedBack.API
+2026-06-15 10:56:54.004 +00:00 [INF] Server xdsitnspjotham:25732:e0c4142d successfully announced in 49.5778 ms
+2026-06-15 10:56:54.006 +00:00 [INF] Server xdsitnspjotham:25732:e0c4142d is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2026-06-15 10:56:54.013 +00:00 [INF] Server xdsitnspjotham:25732:e0c4142d all the dispatchers started
+2026-06-15 10:56:54.453 +00:00 [INF] Executed DbCommand (59ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[AttemptCount], [e].[CreatedAt], [e].[ErrorMessage], [e].[FromEmail], [e].[HtmlBody], [e].[LastAttemptAt], [e].[MaxAttempts], [e].[ReplyTo], [e].[SentAt], [e].[Status], [e].[Subject], [e].[TicketNumber], [e].[ToEmail]
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3) AND [e].[AttemptCount] < [e].[MaxAttempts]
+ORDER BY [e].[CreatedAt]
+2026-06-15 10:57:09.289 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_0) [e].[Id], [e].[AttemptCount], [e].[CreatedAt], [e].[ErrorMessage], [e].[FromEmail], [e].[HtmlBody], [e].[LastAttemptAt], [e].[MaxAttempts], [e].[ReplyTo], [e].[SentAt], [e].[Status], [e].[Subject], [e].[TicketNumber], [e].[ToEmail]
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3) AND [e].[AttemptCount] < [e].[MaxAttempts]
+ORDER BY [e].[CreatedAt]
+2026-06-15 10:57:22.487 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5175/api/auth/login - null null
+2026-06-15 10:57:22.530 +00:00 [INF] CORS policy execution failed.
+2026-06-15 10:57:22.531 +00:00 [INF] Request origin https://feed-back-frontend-six.vercel.app does not have permission to access the resource.
+2026-06-15 10:57:22.546 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5175/api/auth/login - 204 null null 76.8266ms
+2026-06-15 10:57:23.701 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-15 10:57:53.706 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [EmailQueues] AS [e]
+WHERE [e].[Status] IN (0, 3)
+2026-06-15 10:57:59.390 +00:00 [INF] Server xdsitnspjotham:25732:e0c4142d caught stopping signal...
+2026-06-15 10:57:59.392 +00:00 [INF] Application is shutting down...
+2026-06-15 10:57:59.393 +00:00 [INF] Server xdsitnspjotham:25732:e0c4142d All dispatchers stopped
+2026-06-15 10:57:59.397 +00:00 [INF] Server xdsitnspjotham:25732:e0c4142d successfully reported itself as stopped in 2.2214 ms
+2026-06-15 10:57:59.398 +00:00 [INF] Server xdsitnspjotham:25732:e0c4142d has been stopped in total 6.0151 ms

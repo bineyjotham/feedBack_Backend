@@ -204,3 +204,4 @@ C:\Users\ITIntern01\Web_App\Feedback\FeedBack.API\FeedBack.API\obj\Debug\net8.0\
 C:\Users\ITIntern01\Web_App\Feedback\FeedBack.API\FeedBack.API\obj\Debug\net8.0\FeedBack.API.pdb
 C:\Users\ITIntern01\Web_App\Feedback\FeedBack.API\FeedBack.API\obj\Debug\net8.0\FeedBack.API.genruntimeconfig.cache
 C:\Users\ITIntern01\Web_App\Feedback\FeedBack.API\FeedBack.API\obj\Debug\net8.0\ref\FeedBack.API.dll
+C:\Users\ITIntern01\Web_App\Feedback\FeedBack.API\FeedBack.API\obj\Debug\net8.0\FeedBack.API.sourcelink.json
