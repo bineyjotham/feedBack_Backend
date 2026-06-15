@@ -20,6 +20,7 @@ using AspNetCoreRateLimit;
 
 DotNetEnv.Env.Load();
 var builder = WebApplication.CreateBuilder(args);
+Program.InterpolateEnvironmentVariables(builder.Configuration);
 
 // Configure Serilog with Application Insights
 Log.Logger = new LoggerConfiguration()
@@ -273,7 +274,7 @@ using (var scope = app.Services.CreateScope())
     // Seed default admin user if none exists
     if (!await dbContext.Users.AnyAsync())
     {
-        var adminPassword = BCrypt.Net.BCrypt.HashPassword("Admin123!");
+        var adminPassword = BCrypt.Net.BCrypt.HashPassword(app.Configuration["DefaultAdminPassword"] ?? "Admin123!");
         dbContext.Users.Add(new FeedBack.API.Models.User
         {
             Email = "admin@xdsdata.com",
@@ -295,5 +296,29 @@ public class HangfireAuthorizationFilter : Hangfire.Dashboard.IDashboardAuthoriz
     {
         // In production, implement proper authorization
         return true;
+    }
+}
+
+public partial class Program
+{
+    public static void InterpolateEnvironmentVariables(IConfiguration configuration)
+    {
+        var regex = new System.Text.RegularExpressions.Regex(@"\$\{([^}]+)\}");
+        foreach (var entry in configuration.AsEnumerable())
+        {
+            if (entry.Value != null)
+            {
+                var newValue = regex.Replace(entry.Value, match =>
+                {
+                    var varName = match.Groups[1].Value;
+                    return Environment.GetEnvironmentVariable(varName) ?? match.Value;
+                });
+                
+                if (newValue != entry.Value)
+                {
+                    configuration[entry.Key] = newValue;
+                }
+            }
+        }
     }
 }
