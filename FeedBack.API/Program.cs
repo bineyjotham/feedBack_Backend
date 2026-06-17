@@ -198,7 +198,7 @@ builder.Services.AddCors(options =>
                 "http://localhost:8080",
                 "http://localhost:8090",
                 "https://xdsdataghana.cloud",
-                "https://feed-back-frontend-six.vercel.app/")
+                "https://feed-back-frontend-six.vercel.app")
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials();
