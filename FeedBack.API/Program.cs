@@ -218,6 +218,8 @@ else
     app.UseHttpsRedirection();
 }
 
+app.UseCors("AllowFrontend");
+
 // Enable Prometheus metrics endpoint
 app.UseHttpMetrics(); // prometheus-net
 app.UseOpenTelemetryPrometheusScrapingEndpoint(); // OpenTelemetry
@@ -245,7 +247,6 @@ app.MapGet("/metrics/custom", async (IMetricsService metricsService) =>
 });
 
 
-app.UseCors("AllowFrontend");
 app.UseIpRateLimiting();
 app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseAuthentication();
