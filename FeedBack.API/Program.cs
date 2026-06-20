@@ -198,6 +198,7 @@ builder.Services.AddCors(options =>
                 "http://localhost:8080",
                 "http://localhost:8090",
                 "https://xdsdataghana.cloud",
+                "https://www.xdsdataghana.cloud",
                 "https://api.xdsdataghana.cloud",
                 "https://feed-back-frontend-six.vercel.app")
               .AllowAnyMethod()
@@ -305,7 +306,7 @@ public partial class Program
 {
     public static void InterpolateEnvironmentVariables(IConfiguration configuration)
     {
-        var regex = new System.Text.RegularExpressions.Regex(@"\$\{([^}]+)\}");
+        var regex = new System.Text.RegularExpressions.Regex(@"\$\{([^:-]+)(?::-(.*))?\}");
         foreach (var entry in configuration.AsEnumerable())
         {
             if (entry.Value != null)
@@ -313,7 +314,8 @@ public partial class Program
                 var newValue = regex.Replace(entry.Value, match =>
                 {
                     var varName = match.Groups[1].Value;
-                    return Environment.GetEnvironmentVariable(varName) ?? match.Value;
+                    var defaultValue = match.Groups[2].Success ? match.Groups[2].Value : match.Value;
+                    return Environment.GetEnvironmentVariable(varName) ?? defaultValue;
                 });
                 
                 if (newValue != entry.Value)

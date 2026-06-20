@@ -1,20 +1,18 @@
-version: '3.8'
-
 services:
   feedback-db:
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
-      ACCEPT_EULA: 'Y'
-      SA_PASSWORD: 'jothamBiney@123'
-      MSSQL_PID: 'Express'
-    ports:
-      - "1434:1433"
+      ACCEPT_EULA: "Y"
+      DB_PASSWORD: ${DB_PASSWORD}
+      MSSQL_PID: "Express"
+    # ports:
+    #   - "1434:1433"
     volumes:
       - feedback-db_data:/var/opt/mssql
     networks:
       - feedback_network
     healthcheck:
-      test: ["CMD", "/opt/mssql-tools18/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "jothamBiney@123", "-Q", "SELECT 1", "-No"]
+      test: ["CMD", "/opt/mssql-tools18/bin/sqlcmd", "-S", "localhost", "-U", "${DB_USER}", "-P", "${DB_PASSWORD}", "-Q", "SELECT 1", "-No"]
       interval: 10s
       retries: 10
       start_period: 30s
@@ -33,93 +31,36 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "5175:80"
-      - "5001:443"
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-proxy
+      - traefik.http.routers.feedback-backend.rule=Host(`api.xdsdataghana.cloud`)
+      - traefik.http.routers.feedback-backend.entrypoints=websecure
+      - traefik.http.routers.feedback-backend.tls.certresolver=letsencrypt
+      - traefik.http.services.feedback-backend.loadbalancer.server.port=8080
     environment:
-      - ConnectionStrings__DefaultConnection=Server=feedback-db;Database=FeedbackDB;User ID=sa;Password=jothamBiney@123;MultipleActiveResultSets=true;TrustServerCertificate=true
-      - ConnectionStrings__HangfireConnection=Server=feedback-db;Database=FeedbackDB_Hangfire;User ID=sa;Password=jothamBiney@123;MultipleActiveResultSets=true;TrustServerCertificate=true
+      - ConnectionStrings__DefaultConnection=Server=feedback-db;Database=FeedbackDB;User ID=${DB_USER};Password=${DB_PASSWORD};MultipleActiveResultSets=true;TrustServerCertificate=true
+      - ConnectionStrings__HangfireConnection=Server=feedback-db;Database=FeedbackDB_Hangfire;User ID=${DB_USER};Password=${DB_PASSWORD};MultipleActiveResultSets=true;TrustServerCertificate=true
       - ConnectionStrings__Redis=redis:6379
+      - Jwt__Key=${JWT_KEY}
+      - Jwt__Issuer=${JWT_ISSUER}
+      - Jwt__Audience=${JWT_AUDIENCE}
+      - DefaultAdminPassword=${DEFAULT_ADMIN_PASSWORD}
+    volumes:
+      - aspnet_keys:/home/app/.aspnet/DataProtection-Keys
     depends_on:
       feedback-db:
         condition: service_healthy
-      redis:
-        condition: service_started
     networks:
       - feedback_network
-  
-  prometheus:
-    image: prom/prometheus:latest
-    container_name: prometheus
-    ports:
-      - "9090:9090"
-    volumes:
-      - ./FeedBack.API/prometheus.yml:/etc/prometheus/prometheus.yml
-      - ./FeedBack.API/alerts.yml:/etc/prometheus/alerts.yml
-      - prometheus_data:/prometheus
-    command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--storage.tsdb.path=/prometheus'
-      - '--web.console.libraries=/etc/prometheus/console_libraries'
-      - '--web.console.templates=/etc/prometheus/consoles'
-      - '--web.enable-lifecycle'
-    networks:
-      - feedback_network
-    depends_on:
-      - feedback-api
-
-  grafana:
-    image: grafana/grafana:latest
-    container_name: grafana
-    ports:
-      - "3001:3000"
-    environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin
-      - GF_INSTALL_PLUGINS=grafana-piechart-panel
-    volumes:
-      - grafana_data:/var/lib/grafana
-      - ./grafana/provisioning:/etc/grafana/provisioning
-    networks:
-      - feedback_network
-    depends_on:
-      - prometheus
-
-  node-exporter:
-    image: prom/node-exporter:latest
-    container_name: node-exporter
-    ports:
-      - "9100:9100"
-    volumes:
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
-      - /:/rootfs:ro
-    command: 
-      - '--path.procfs=/host/proc'
-      - '--path.sysfs=/host/sys'
-      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
-    networks:
-      - feedback_network
-
-  cadvisor:
-    image: gcr.io/cadvisor/cadvisor:latest
-    container_name: cadvisor
-    ports:
-      - "8081:8080"
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:rw
-      - /sys:/sys:ro
-      - /var/lib/docker/:/var/lib/docker:ro
-    privileged: true
-    networks:
-      - feedback_network
+      - traefik-proxy
 
 networks:
   feedback_network:
-    driver: bridge
+  traefik-proxy:
+    external: true
 
 volumes:
   feedback-db_data:
   redis_data:
-  prometheus_data:
-  grafana_data:
+  aspnet_keys:
